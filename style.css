@@ -1,0 +1,233 @@
+@charset "UTF-8";
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+    font-weight: 100;
+}
+a{
+    text-decoration: none;
+    color: inherit;
+}
+
+main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container-box {
+    display: flex;
+    position: relative;
+    width: 650px;
+    height: 400px;
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: white;
+    box-shadow: 1px 1px 6px #aaa;    
+
+}
+.container-box.move .overlay-container{
+    transform: translateX(0%);
+}
+.container-box.move .overlay:nth-child(2){  
+    z-index: -1;
+    opacity: 0;
+}
+
+/* FORMULARIOS*/
+.panel {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    height: 100%;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 20px;
+    background-color: white;
+    transition: 0.3s linear;
+}
+.panel:nth-child(2){
+    transform: translateX(-100%);
+    z-index: -1;
+    opacity: 1;
+}
+.container-box.move .panel:nth-child(2){
+    transform: translateX(0%);
+    z-index: 0;
+    opacity: 1;
+}
+.container-box.move .panel:nth-child(1){
+    transform: translateX(100%);
+    opacity: 0;
+}
+.form-title{
+    margin: 5px;
+    font-size: 22px;
+    font-weight: 600;
+}
+.form-text{
+    font-size: 16px;
+}
+.form-group {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    padding: 5px;
+}
+
+.form-group input:focus::placeholder{
+    color:red;
+    font-size: 14px;
+    transition: 0.3s linear;
+}
+.form-input {
+    width: 100%;
+    padding: 15px 15px;
+    margin: 10px;
+    border: none;
+    outline: none;
+    background-color:rgb(240, 240, 240);
+    border-radius: 8px;
+}
+.form-check {
+    width: 50%;
+    display: none;
+}
+input[type="checkbox"]:checked + label {
+    background-color: orange;
+    color: white;
+}
+.btn {
+    background-color:transparent;
+    border-radius: 8px;
+    border: none;
+    font-weight: 500;
+    font-size: 15px;
+    text-align: center;
+    justify-content: center;
+    cursor: pointer;
+    padding: 10px;
+    margin: 6px 0px;
+    transition: 0.3s linear;
+    width: 45%;
+}
+.btn-block {
+    display: block;
+    width: 95%;
+}
+.btn-check{
+    background-color: white;
+    border: 1px solid orange;
+    color: orange;
+}
+.btn-primary {
+    background-color: red;
+    color: white;
+}
+.btn-primary-outlined {
+    background-color: red;
+    border: 1px solid white;
+    color: white;
+}
+.btn-secondary {
+    background-color: lime;
+    color: white;
+}
+.btn-secondary-outlined {
+    background-color: lime;
+    border: 1px solid white;
+    color: white;
+}
+.btn-primary:hover{
+    opacity: 0.7;    
+    box-shadow: 1px 1px 2px #555;
+}
+.btn-primary-outlined:hover {
+    background-color: white;
+    border: 1px solid red;
+    color: red;
+}
+.btn-secondary:hover {
+    opacity: 0.7; 
+    box-shadow: 1px 1px 2px #555;
+}
+.btn-secondary-outlined:hover {
+    background-color: white;
+    color: lime;
+}
+
+/* OVERLAY*/
+.overlay-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height:100%;
+    color: white;
+    transform: translateX(100%);
+    transition: 0.3s linear;
+}
+.overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: red;
+    padding: 10px; 
+}
+
+/* MOBILE */
+.mobile-text{
+    display: none;
+}
+@media (max-width: 550px){
+    .overlay-container{
+        display: none;
+    }
+    .container-box {
+        height: 100vh;
+        width: 100vw;
+        justify-content: center;
+        box-shadow: none;
+        border-radius: 0;
+    }
+    .panel {
+        flex-direction: column;
+        width: 100vw;
+        position: absolute;
+    }
+    .panel:nth-child(2) {
+        transform: translateX(100%);
+        background-color: red;
+        color: white;
+    }
+    .container-box.move .panel:nth-child(1) {        
+        transform: translateX(-100%);
+    }
+    .container-box.move .panel:nth-child(2) {
+        width: 100vw;
+        transform: translateX(0%);
+        display: flex;
+    }
+   
+    .form-group {
+        margin: 20px;
+    }
+    .mobile-text a {
+        cursor: pointer;
+        padding: 0 5px;
+        font-size: 16px;
+        font-weight: 600;
+    }
+    .mobile-text{
+        display: block;
+        margin: 10px;
+    }
+}
